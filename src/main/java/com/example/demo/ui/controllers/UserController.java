@@ -1,5 +1,8 @@
 package com.example.demo.ui.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,15 @@ import com.example.demo.ui.model.response.UserRest;
 @RestController
 @RequestMapping("users")
 public class UserController {
+	
+	Map<String, UserRest> users;
+	
+	public UserController(Map<String, UserRest> users) {
+		super();
+		this.users = users;
+	}
+
+	
 	
 	@GetMapping
 	public String getUsers(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="limit", defaultValue="1") int limit ){
